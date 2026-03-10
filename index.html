@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chamado Impressora</title>
+</head>
+
+<body>
+
+<h2>Abrir Chamado Impressora</h2>
+
+<form id="formChamado">
+
+<label>OS</label><br>
+<input type="text" id="os"><br><br>
+
+<label>Setor</label><br>
+<input type="text" id="setor"><br><br>
+
+<label>Local</label><br>
+<select id="local">
+<option>Sede</option>
+<option>Município</option>
+</select><br><br>
+
+<label>Modelo da Impressora</label><br>
+<input type="text" id="modelo"><br><br>
+
+<label>Problema</label><br>
+<input type="text" id="problema"><br><br>
+
+<label>Técnico</label><br>
+<input type="text" id="tecnico"><br><br>
+
+<button type="button" onclick="enviarWhatsapp()">Enviar</button>
+
+</form>
+
+<script>
+
+function enviarWhatsapp(){
+
+const os = document.getElementById("os").value;
+const setor = document.getElementById("setor").value;
+const local = document.getElementById("local").value;
+const modelo = document.getElementById("modelo").value;
+const problema = document.getElementById("problema").value;
+const tecnico = document.getElementById("tecnico").value;
+
+const mensagem = `
+🖨️ *CHAMADO IMPRESSORA*
+
+OS: ${os}
+Local: ${local}
+Setor: ${setor}
+
+Modelo: ${modelo}
+Problema: ${problema}
+
+Aberto por: ${tecnico}
+`;
+
+const url = "https://wa.me/?text=" + encodeURIComponent(mensagem);
+
+window.open(url, "_blank");
+
+}
+
+</script>
+
+</body>
+</html>
