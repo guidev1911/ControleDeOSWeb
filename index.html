@@ -1,33 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Chamado Impressora</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chamado de Impressora</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:500px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    margin-top:10px;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#25D366;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    background:#1ebe5d;
+}
+
+footer{
+    text-align:center;
+    margin-top:15px;
+    font-size:12px;
+    color:#777;
+}
+
+/* responsivo */
+
+@media (max-width:600px){
+
+body{
+    padding:10px;
+}
+
+.container{
+    padding:20px;
+}
+
+h2{
+    font-size:20px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<h2>Abrir Chamado Impressora</h2>
+<div class="container">
+
+<h2>🖨️ Abrir Chamado Impressora</h2>
 
 <form id="formChamado">
 
-<label>OS</label><br>
-<input type="text" id="os"><br><br>
+<label>OS</label>
+<input type="text" id="os" placeholder="Número da OS">
 
-<label>Setor</label><br>
-<input type="text" id="setor"><br><br>
+<label>Setor</label>
+<input type="text" id="setor" placeholder="Ex: Financeiro">
 
-<label>Local</label><br>
+<label>Local</label>
 <select id="local">
 <option>Sede</option>
 <option>Município</option>
-</select><br><br>
+</select>
 
-<label>Modelo da Impressora</label><br>
+<label>Modelo da Impressora</label>
 <select id="modelo">
 
 <option value="">Selecione a impressora</option>
-
 <option>HP LaserJet M428</option>
 <option>HP LaserJet M404</option>
 <option>HP LaserJet P1102</option>
@@ -35,17 +121,25 @@
 <option>Brother HL-L2320D</option>
 <option>Epson L3150</option>
 
-</select><br><br>
+</select>
 
-<label>Problema</label><br>
-<input type="text" id="problema"><br><br>
+<label>Problema</label>
+<input type="text" id="problema" placeholder="Ex: Manchando">
 
-<label>Técnico</label><br>
-<input type="text" id="tecnico"><br><br>
+<label>Técnico</label>
+<input type="text" id="tecnico" placeholder="Seu nome">
 
-<button type="button" onclick="enviarWhatsapp()">Enviar</button>
+<button type="button" onclick="enviarWhatsapp()">
+Enviar para Casa da Cópia
+</button>
 
 </form>
+
+<footer>
+Sistema de Chamado de Impressoras
+</footer>
+
+</div>
 
 <script>
 
@@ -58,8 +152,7 @@ const modelo = document.getElementById("modelo").value;
 const problema = document.getElementById("problema").value;
 const tecnico = document.getElementById("tecnico").value;
 
-const mensagem = `
-🖨️ *CHAMADO IMPRESSORA*
+const mensagem = `🖨️ *CHAMADO IMPRESSORA*
 
 OS: ${os}
 Local: ${local}
@@ -68,8 +161,7 @@ Setor: ${setor}
 Modelo: ${modelo}
 Problema: ${problema}
 
-Aberto por: ${tecnico}
-`;
+Aberto por: ${tecnico}`;
 
 const url = "https://wa.me/?text=" + encodeURIComponent(mensagem);
 
