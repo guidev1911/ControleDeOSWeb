@@ -5,94 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chamado de Impressora</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f6f9;
-    margin:0;
-    padding:20px;
-}
-
-.container{
-    max-width:500px;
-    margin:auto;
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-h2{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-label{
-    font-weight:bold;
-    display:block;
-    margin-top:10px;
-}
-
-input, select{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    border-radius:6px;
-    border:1px solid #ccc;
-    font-size:14px;
-    box-sizing:border-box;
-}
-
-button{
-    width:100%;
-    margin-top:20px;
-    padding:12px;
-    border:none;
-    border-radius:8px;
-    background:#25D366;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-button:hover{
-    background:#1ebe5d;
-}
-
-footer{
-    text-align:center;
-    margin-top:15px;
-    font-size:12px;
-    color:#777;
-}
-
-@media (max-width:600px){
-
-body{
-    padding:10px;
-}
-
-.container{
-    padding:20px;
-}
-
-h2{
-    font-size:20px;
-}
-
-}
-
-</style>
 </head>
 
 <body>
 
 <div class="container">
 
-<h2>🖨️ Abrir Chamado Impressora</h2>
+<h2>Abrir chamado para impressora</h2>
 
 <form id="formChamado">
 
@@ -170,7 +91,8 @@ h2{
 <label>Problema</label>
 <select id="problema">
 
-<option value="">QUEIMADA</option>
+<option value="">SELECIONE O PROBLEMA</option>
+<option>QUEIMADA</option>
 <option>QUEBRADA</option>
 <option>PRENDENDO PAPEL</option>
 <option>CILINDRO</option>
@@ -210,35 +132,7 @@ Sistema de Chamado de Impressoras
 
 </div>
 
-<script>
-
-function enviarWhatsapp(){
-
-const os = document.getElementById("os").value;
-const setor = document.getElementById("setor").value;
-const local = document.getElementById("local").value;
-const modelo = document.getElementById("modelo").value;
-const problema = document.getElementById("problema").value;
-const tecnico = document.getElementById("tecnico").value;
-
-const mensagem = `🖨️ *CHAMADO IMPRESSORA*
-
-OS: ${os}
-Local: ${local}
-Setor: ${setor}
-
-Modelo: ${modelo}
-Problema: ${problema}
-
-Aberto por: ${tecnico}`;
-
-const url = "https://wa.me/?text=" + encodeURIComponent(mensagem);
-
-window.open(url, "_blank");
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
